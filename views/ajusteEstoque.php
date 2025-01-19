@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao" readonly disabled>
+                <input type="text" id="descricao" name="descricao" readonly>
             </div><p>
 
             <div class="form-group">

@@ -55,3 +55,5 @@ CREATE TABLE reAberturaOP (
     usuario_id INT(20), -- Chave estrangeira precisa ser definida
     CONSTRAINT fk_reabertura_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id)
 );
+
+
