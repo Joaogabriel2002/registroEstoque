@@ -1,5 +1,5 @@
 function buscarDescricao() {
-    const codigo = document.getElementById('codigo').value.trim()// Obtém o valor do campo código
+    const codigo = document.getElementById('codigo').value.trim(); // Obtém o valor do campo código
 
     if (codigo !== '') {
         fetch(`Conexao.php?codigo=${codigo}`) // Envia o código via query string
@@ -26,16 +26,18 @@ function buscarDescricao() {
     }
 }
 
-function verificarLote() {
-    const verificaLote = document.getElementById("verificaLote").value;
-    const lotes = document.getElementById("lotes");
+function verificaMotivo() {
+    const VerificaMotivo = document.getElementById("motivo").value;
+    const detalhes = document.getElementById("detalhes");
+    const funcao = document.getElementById("funcao");
 
-    // Se a resposta é Sim ou não
-    if (verificaLote == "S") {
-        lotes.style.display = "block";
-    } else {
-        lotes.style.display = "none";
+    if (VerificaMotivo === "ErroSistema" || VerificaMotivo === "Outro") {
+        detalhes.style.display = "block"; 
+        funcao.style.display="none";
+
+    }else if (VerificaMotivo === "FaltaInsumo") {
+        detalhes.style.display="none";
+        funcao.style.display="block";
+        //alert("Flamengo!");
     }
 }
-
-
