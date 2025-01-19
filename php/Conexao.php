@@ -30,14 +30,14 @@ try {
         $descricao = $stmt->fetchColumn();
 
         if ($descricao) {
-            echo json_encode(['descricao' => $descricao]); // Retornar descrição encontrada
+            echo json_encode(['descricaoItem' => $descricao]); // Retornar descrição encontrada
         } else {
-            echo json_encode(['descricao' => 'Descrição não encontrada.']); // Nenhum resultado
+            echo json_encode(['descricaoItem' => 'Descrição não encontrada.']); // Nenhum resultado
         }
     } else {
-        echo json_encode(['descricao' => 'Código não fornecido.']); // Parâmetro ausente
+        echo json_encode(['descricaoItem' => 'Código não fornecido.']); // Parâmetro ausente
     }
 } catch (PDOException $e) {
-    echo json_encode(['descricao' => 'Erro ao conectar ao banco de dados.']);
+    echo json_encode(['descricaoItem' => 'Erro ao conectar ao banco de dados.']);
 }
 ?>

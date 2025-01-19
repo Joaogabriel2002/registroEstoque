@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ordens de Produção</title>
     <script src="../js/op.js" defer></script>
+    <script src="../js/script.js" defer> </script>
        
 </head>
 <body>
@@ -50,7 +51,7 @@
 
             <div class="form-group">
                 <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao" readonly disabled>
+                <input type="text" id="descricao" name="descricao" readonly>
             </div><br>
         </div>
         <button type="submit"> Abrir Solicitação:</button>

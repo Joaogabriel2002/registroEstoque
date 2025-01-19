@@ -1,5 +1,17 @@
+
+function verificarLote() {
+    const verificaLote = document.getElementById("verificaLote").value;
+    const lotes = document.getElementById("lotes");
+
+    // Se a resposta é Sim ou não
+    if (verificaLote == "S") {
+        lotes.style.display = "block";
+    } else {
+        lotes.style.display = "none";
+    }
+}
 function buscarDescricao() {
-    const codigo = document.getElementById('codigo').value.trim()// Obtém o valor do campo código
+    const codigo = document.getElementById('codigo').value.trim(); // Obtém o valor do campo código
 
     if (codigo !== '') {
         fetch(`../php/Conexao.php?codigo=${codigo}`) // Envia o código via query string
@@ -11,8 +23,8 @@ function buscarDescricao() {
             })
             .then(data => {
                 // Atualiza o campo de descrição com o valor retornado ou uma mensagem de erro
-                if (data.descricao) {
-                    document.getElementById('descricao').value = data.descricao;
+                if (data.descricaoItem) {
+                    document.getElementById('descricao').value = data.descricaoItem;
                 } else {
                     document.getElementById('descricao').value = 'Descrição não encontrada.';
                 }
@@ -26,16 +38,5 @@ function buscarDescricao() {
     }
 }
 
-function verificarLote() {
-    const verificaLote = document.getElementById("verificaLote").value;
-    const lotes = document.getElementById("lotes");
-
-    // Se a resposta é Sim ou não
-    if (verificaLote == "S") {
-        lotes.style.display = "block";
-    } else {
-        lotes.style.display = "none";
-    }
-}
 
 
