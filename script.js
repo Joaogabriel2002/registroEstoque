@@ -25,3 +25,16 @@ function buscarDescricao() {
         document.getElementById('descricao').value = ''; // Limpa o campo caso o código esteja vazio
     }
 }
+
+function verificarLote() {
+    const verificaLote = document.getElementById("verificaLote").value;
+    const lotes = document.getElementById("lotes");
+
+    // Se a impressora for EPSON, exibe as opções de cores
+    if (verificaLote == "S") {
+        lotes.style.display = "block";
+    } else {
+        // Se for outra impressora, oculta as opções de cores e marca "Preto" automaticamente
+        lotes.style.display = "none";
+    }
+}
