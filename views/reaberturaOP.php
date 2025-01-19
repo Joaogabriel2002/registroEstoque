@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ordens de Produção</title>
-    <script src="script.js" defer></script>
+    <script src="../js/script.js" defer></script>
 </head>
 <body>
     <h1>Rebertura de OP</h1><br>
@@ -44,7 +44,7 @@
         <input type="text"><p>
 
         <button type="submit">Abrir solicitação</button>
-        <button type="button" onclick="window.location.href='index.php';">Voltar</button>
+        <button type="button" onclick="window.location.href='../php/index.php';">Voltar</button>
     </form>
         
 </body>

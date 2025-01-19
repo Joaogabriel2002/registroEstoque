@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajuste de Estoque</title>
-    <script src="script.js" defer></script>
+    <script src="../js/script.js" defer></script>
     
 </head>
 <body style="background-color: gray;">
@@ -57,7 +57,7 @@
             </div>
             <p>
             <button type="submit">Solicitar Ajuste</button>
-            <button type="button" onclick="window.location.href='index.php';">Voltar</button>
+            <button type="button" onclick="window.location.href='../php/index.php';">Voltar</button>
         </form>
     </div>
 
