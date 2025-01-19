@@ -14,30 +14,10 @@ class Conexao {
             exit;
         }
     }
-}
-try {
 
-    $db = new Conexao();
-    $pdo = $db->conn;
-
-    if (isset($_GET['codigo'])) {
-        $codigo = $_GET['codigo'];
-
-        $stmt = $pdo->prepare("SELECT descricaoItem FROM itens WHERE codItem = :codigo");
-        $stmt->bindParam(':codigo', $codigo, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $descricao = $stmt->fetchColumn();
-
-        if ($descricao) {
-            echo json_encode(['descricaoItem' => $descricao]); // Retornar descrição encontrada
-        } else {
-            echo json_encode(['descricaoItem' => 'Descrição não encontrada.']); // Nenhum resultado
-        }
-    } else {
-        echo json_encode(['descricaoItem' => 'Código não fornecido.']); // Parâmetro ausente
+    public function getConn(){
+        return $this->conn;
     }
-} catch (PDOException $e) {
-    echo json_encode(['descricaoItem' => 'Erro ao conectar ao banco de dados.']);
 }
+
 ?>

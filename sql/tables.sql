@@ -57,3 +57,4 @@ CREATE TABLE reAberturaOP (
 );
 
 
+INSERT INTO ajusteestoque (qtdContagem,lote,usuario_id,itens_idItem) VALUE (1,1234,1,104)

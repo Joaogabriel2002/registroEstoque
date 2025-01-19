@@ -1,3 +1,15 @@
+<?php
+    require_once "../php/Usuario.php";
+
+    $usuario= new Usuario();
+
+    $usuarios = $usuario->consultarUsuarios();
+
+//     echo "<pre>";
+// print_r($usuarios); // Mostra os dados recuperados
+// echo "</pre>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +37,19 @@
 
             <div class="form-group">
                 <label for="usuario">Usuário Solicitante:</label>
-                    <input type="text" name="usuario">
-            </div><p>
+                    <select name="usuario" id="usuario">
+                        <option value=""></option>
+                        <?php
+                            if (!empty($usuarios)) { // Verifica se há dados retornados
+                                foreach ($usuarios as $row) { // Itera pelos resultados
+                                echo "<option value='{$row['id']}'>{$row['nomeUsuario']}</option>";
+                            }
+                            } else {
+                                echo "<option value=''>Nenhum usuário disponível</option>";
+                                }
+                        ?>
+                    </select>
+            </div>
 
             <div class="form-group">
                 <label for="codigo">Código do Item:</label>

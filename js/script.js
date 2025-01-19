@@ -14,7 +14,7 @@ function buscarDescricao() {
     const codigo = document.getElementById('codigo').value.trim(); // Obtém o valor do campo código
 
     if (codigo !== '') {
-        fetch(`../php/Conexao.php?codigo=${codigo}`) // Envia o código via query string
+        fetch(`../php/itens.php?codigo=${codigo}`) // Envia o código via query string
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro na resposta do servidor');
