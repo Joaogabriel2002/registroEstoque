@@ -23,21 +23,12 @@
         <label for="numeroOP">Número da O.P.</label>
         <input type="number">
         <p>
-        <div class="form-group">
-                <label for="codigo">Código do Item:</label>
-                <input type="text" id="codigo" name="codigo" oninput="buscarDescricao()">
-            </div>
-
-            <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao" readonly disabled>
-            </div><p>
-
         <label for="motivo">Motivo:</label>
         <select name="motivo" id="motivo"> 
             <option value="">Selecione</option>
-            <option value="">Erro na Quantidade do PA</option>
-            <option value="">Erro na Baixa dos Insumos</option>
+            <option value="Ajuste"> Ajuste Necessário</option>
+            <option value="Erro na Quantidade do PA">Erro na Quantidade do PA</option>
+            <option value="Erro na Baixa dos Insumos">Erro na Baixa dos Insumos</option>
         </select><p>
 
         <label for="motivo">Detalhes:</label>
