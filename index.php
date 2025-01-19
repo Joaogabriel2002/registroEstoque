@@ -8,7 +8,7 @@
 <body>
     <h1> Selecione a opção Desejada:</h1>
     <button type="button" onclick="window.location.href='ajusteEstoque.php';">Ajuste de Estoque</button>
-    <button type="button">Ordem de Produção</button>
+    <button type="button" onclick="window.location.href='op.php';">Ordem de Produção</button>
    
 </body>
 </html>
