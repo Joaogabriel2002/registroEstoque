@@ -1,4 +1,4 @@
-
+  
 function verificarLote() {
     const verificaLote = document.getElementById("verificaLote").value;
     const lotes = document.getElementById("lotes");
@@ -10,33 +10,30 @@ function verificarLote() {
         lotes.style.display = "none";
     }
 }
-function buscarDescricao() {
-    const codigo = document.getElementById('codigo').value.trim(); // Obtém o valor do campo código
+    function buscarDescricao() {
+        const codigo = document.getElementById('codigo').value.trim();
 
-    if (codigo !== '') {
-        fetch(`../php/itens.php?codigo=${codigo}`) // Envia o código via query string
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro na resposta do servidor');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Atualiza o campo de descrição com o valor retornado ou uma mensagem de erro
-                if (data.descricaoItem) {
-                    document.getElementById('descricao').value = data.descricaoItem;
-                } else {
-                    document.getElementById('descricao').value = 'Descrição não encontrada.';
-                }
-            })
-            .catch(error => {
-                console.error('Erro ao buscar descrição:', error);
-                document.getElementById('descricao').value = 'Erro ao buscar descrição.';
-            });
-    } else {
-        document.getElementById('descricao').value = ''; // Limpa o campo caso o código esteja vazio
+        if (codigo !== '') {
+            // Faz a requisição ao PHP para buscar a descrição e o ID
+            fetch(`../php/itens.php?codigo=${codigo}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.descricaoItem) {
+                        document.getElementById('descricao').value = data.descricaoItem; // Atualiza a descrição
+                        document.getElementById('idItem').value = data.id; // Atualiza o ID
+                    } else {
+                        document.getElementById('descricao').value = data.descricaoItem;
+                        document.getElementById('idItem').value = ''; // Limpa o ID se não encontrar
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar item:', error);
+                    document.getElementById('descricao').value = 'Erro ao buscar descrição.';
+                    document.getElementById('idItem').value = ''; // Limpa o campo ID
+                });
+        } else {
+            document.getElementById('descricao').value = '';
+            document.getElementById('idItem').value = '';
+        }
     }
-}
-
-
 

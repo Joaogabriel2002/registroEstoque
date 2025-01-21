@@ -10,14 +10,19 @@ class Itens extends Conexao
         try {
             $pdo = $this->conn;
 
-            $stmt = $pdo->prepare("SELECT descricaoItem FROM itens WHERE codItem = :codigo");
+            // Modifiquei a consulta para pegar tanto o idItem quanto a descricaoItem
+            $stmt = $pdo->prepare("SELECT idItem, descricaoItem FROM itens WHERE codItem = :codigo");
             $stmt->bindParam(':codigo', $codigo, PDO::PARAM_STR);
             $stmt->execute();
 
-            $descricao = $stmt->fetchColumn();
+            // Pegando os dois valores (idItem e descricaoItem)
+            $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($descricao) {
-                return json_encode(['descricaoItem' => $descricao]);
+            if ($item) {
+                return json_encode([
+                    'id' => $item['idItem'],       // Retorna o id do item
+                    'descricaoItem' => $item['descricaoItem'] // Retorna a descrição do item
+                ]);
             } else {
                 return json_encode(['descricaoItem' => 'Descrição não encontrada.']);
             }
@@ -34,4 +39,6 @@ if (isset($_GET['codigo'])) {
 } else {
     echo json_encode(['descricaoItem' => 'Código não fornecido.']);
 }
+
+
 ?>
