@@ -1,9 +1,33 @@
 <?php
 require_once "../php/Usuario.php";
-require_once "../php/ajusteEstoque.php";
+require_once "../php/opproblema.php";
 $usuario = new Usuario();
 
 $usuarios = $usuario->consultarUsuarios();
+
+    if($_SERVER['REQUEST_METHOD']==='POST'){
+        $usuario_id = isset($_POST['usuario']) ? $_POST['usuario'] : null;
+        $itens_IdItem = isset($_POST['idItem']) ? $_POST['idItem'] : null;
+        $nrOp = isset($_POST['nrop']) ? $_POST['nrop']: null;
+        $descricao = isset($_POST['detalhes']) ? $_POST['detalhes'] :null;
+       
+      
+            $opproblema = new opproblema();
+            $opproblema->setUsuario_Id($usuario_id);
+            $opproblema->setItens_idItem($itens_IdItem);
+            $opproblema->setNrOp($nrOp);
+            $opproblema->setDescricao($descricao);
+
+            $novoOpProb = $opproblema->abrirSolicitacao();
+
+  
+        // if($novoAjuste){
+        //     header("Location: ajusteAberto.php?idSolicitacao=". $novoAjuste);
+        //     exit();
+        // }else{
+        //     echo "Erro ao abrir chamado!";
+        // }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +43,7 @@ $usuarios = $usuario->consultarUsuarios();
 <body>
     <h1>Problema com Fechamento de O.P.</h1>
     <br>
-    <form id="fechamentoOp">
+    <form action="fechamentoOP.php" method="POST">
 
     <div class="form-group">
                 <label for="usuario">Usuário Solicitante:</label>
@@ -40,23 +64,14 @@ $usuarios = $usuario->consultarUsuarios();
         <br>
 
         <label for="numeroOP">Número da O.P.</label>
-        <input type="number" id="numeroOP">
+        <input type="number" name="nrop" id="nrop">
         <p>
 
-        <label for="motivo">Motivo:</label>
-        <select name="motivo" id="motivo" required onchange="verificaMotivo()">
-            <option value="">Selecione:</option>
-            <option value="ErroSistema">Erro de Sistema</option>
-            <option value="FaltaInsumo">Falta de Insumo</option>
-            <option value="Outro">Outro</option>
-        </select>
-
-        <div id="detalhes" style="display:none;">
+        <div id="detalhes" >
             <label for="outro">Descreva:</label>
-            <input type="text" id="outro">
+            <input type="text" id="detalhes" name="detalhes">
         </div><p>
 
-        <div id="funcao" style="display:none;">
         <div class="form-group">
                 <label for="codigo">Código do Item:</label>
                 <input type="text" id="codigo" name="codigo" oninput="buscarDescricao()">
@@ -67,7 +82,7 @@ $usuarios = $usuario->consultarUsuarios();
                 <input type="text" id="descricao" name="descricao" readonly>
                 <input type="hidden" id="idItem" name="idItem">
             </div><p>
-        </div>
+               
         <button type="submit"> Abrir Solicitação:</button>
         <button type="button" onclick="window.location.href='../php/index.php';">Voltar</button>
     </form>
