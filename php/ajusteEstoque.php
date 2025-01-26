@@ -88,6 +88,11 @@ class AjusteEstoque extends Conexao {
         $stmt->bindParam(':usuario_id', $this->usuario_id);
         $stmt->bindParam(':idItem', $this->idItem);
         $stmt->bindParam(':possuiLote', $this->possuiLote);
+        if($stmt->execute()){
+            return $this->conn->lastInsertId();
+        }else{
+            return false;
+        }
 
         return $stmt->execute(); // Retorna true ou false
     }

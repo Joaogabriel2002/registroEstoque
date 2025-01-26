@@ -1,3 +1,11 @@
+<?php
+require_once "../php/Usuario.php";
+require_once "../php/ajusteEstoque.php";
+$usuario = new Usuario();
+
+$usuarios = $usuario->consultarUsuarios();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,16 +21,21 @@
     <br>
     <form id="fechamentoOp">
 
-        <label for="usuario">Usuário:</label>
-        <input type="text" id="usuario">
-        <p>
-
-        <label for="setor">Setor:</label>
-        <select name="setor" id="setor">
-            <option value="aerossol">Aerossol</option>
-            <option value="cosmeticos">Cosmético</option>
-            <option value="saneantes">Saneantes</option>
-        </select>
+    <div class="form-group">
+                <label for="usuario">Usuário Solicitante:</label>
+                <select name="usuario" id="usuario">
+                    <option value=""></option>
+                    <?php
+                        if (!empty($usuarios)) {
+                            foreach ($usuarios as $row) {
+                                echo "<option value='{$row['id']}'>{$row['nomeUsuario']}</option>";
+                            }
+                        } else {
+                            echo "<option value=''>Nenhum usuário disponível</option>";
+                        }
+                    ?>
+                </select>
+            </div>
         <p>
         <br>
 
@@ -44,15 +57,16 @@
         </div><p>
 
         <div id="funcao" style="display:none;">
-            <div class="form-group">
+        <div class="form-group">
                 <label for="codigo">Código do Item:</label>
                 <input type="text" id="codigo" name="codigo" oninput="buscarDescricao()">
-            </div><p>
+            </div>
 
             <div class="form-group">
                 <label for="descricao">Descrição:</label>
                 <input type="text" id="descricao" name="descricao" readonly>
-            </div><br>
+                <input type="hidden" id="idItem" name="idItem">
+            </div><p>
         </div>
         <button type="submit"> Abrir Solicitação:</button>
         <button type="button" onclick="window.location.href='../php/index.php';">Voltar</button>

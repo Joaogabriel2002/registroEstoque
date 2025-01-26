@@ -28,6 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
         echo "Erro: Alguns dados não foram enviados corretamente.";
     }
+    if($novoAjuste){
+        header("Location: ajusteAberto.php?idSolicitacao=". $novoAjuste);
+        exit();
+    }else{
+        echo "Erro ao abrir chamado!";
+    }
 }
 ?>
 
