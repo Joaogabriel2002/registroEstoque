@@ -68,6 +68,11 @@ class OpProblema extends Conexao {
         $stmt->bindParam(':descricao', $this->descricao);
         $stmt->bindParam(':usuario_id', $this->usuario_id);
         $stmt->bindParam(':itens_idItem', $this->itens_idItem);
+        if($stmt->execute()){
+            return $this->conn->lastInsertId();
+        }else{
+            return false;
+        }
         return $stmt->execute();
     }
 }

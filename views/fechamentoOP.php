@@ -21,12 +21,12 @@ $usuarios = $usuario->consultarUsuarios();
             $novoOpProb = $opproblema->abrirSolicitacao();
 
   
-        // if($novoAjuste){
-        //     header("Location: ajusteAberto.php?idSolicitacao=". $novoAjuste);
-        //     exit();
-        // }else{
-        //     echo "Erro ao abrir chamado!";
-        // }
+            if($novoOpProb){
+                header("Location: fechamentoAberto.php?idProblema=". $novoOpProb);
+            exit();
+             }else{
+                echo "Erro ao abrir chamado!";
+            }
     }
 ?>
 
@@ -66,12 +66,6 @@ $usuarios = $usuario->consultarUsuarios();
         <label for="numeroOP">Número da O.P.</label>
         <input type="number" name="nrop" id="nrop">
         <p>
-
-        <div id="detalhes" >
-            <label for="outro">Descreva:</label>
-            <input type="text" id="detalhes" name="detalhes">
-        </div><p>
-
         <div class="form-group">
                 <label for="codigo">Código do Item:</label>
                 <input type="text" id="codigo" name="codigo" oninput="buscarDescricao()">
@@ -82,7 +76,12 @@ $usuarios = $usuario->consultarUsuarios();
                 <input type="text" id="descricao" name="descricao" readonly>
                 <input type="hidden" id="idItem" name="idItem">
             </div><p>
-               
+
+            <div id="detalhes" >
+            <label for="outro">Detalhes do Problema(opcional):</label>
+            <input type="text" id="detalhes" name="detalhes">
+        </div><p>
+
         <button type="submit"> Abrir Solicitação:</button>
         <button type="button" onclick="window.location.href='../php/index.php';">Voltar</button>
     </form>
